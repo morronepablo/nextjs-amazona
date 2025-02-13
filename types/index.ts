@@ -9,6 +9,7 @@ import {
   UserNameSchema,
   UserSignInSchema,
   UserSignUpSchema,
+  WebPageInputSchema,
 } from "@/lib/validator";
 import { z } from "zod";
 
@@ -22,6 +23,7 @@ export type IReviewDetails = IReviewInput & {
 };
 export type IProductInput = z.infer<typeof ProductInputSchema>;
 export type Data = {
+  webPages: IWebPageInput[];
   users: IUserInput[];
   products: IProductInput[];
   reviews: {
@@ -63,3 +65,6 @@ export type IUserInput = z.infer<typeof UserInputSchema>;
 export type IUserSignIn = z.infer<typeof UserSignInSchema>;
 export type IUserSignUp = z.infer<typeof UserSignUpSchema>;
 export type IUserName = z.infer<typeof UserNameSchema>;
+
+// webpage
+export type IWebPageInput = z.infer<typeof WebPageInputSchema>;
