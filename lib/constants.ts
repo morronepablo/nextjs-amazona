@@ -60,3 +60,5 @@ export const AVAILABLE_DELIVERY_DATES = [
     freeShippingMinPrice: 35,
   },
 ];
+
+export const USER_ROLES = ["Admin", "User"];
