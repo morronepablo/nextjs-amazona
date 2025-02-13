@@ -48,6 +48,7 @@ const CURRENCY_FORMATTER = new Intl.NumberFormat("en-US", {
   style: "currency",
   minimumFractionDigits: 2,
 });
+
 export function formatCurrency(amount: number) {
   return CURRENCY_FORMATTER.format(amount);
 }
@@ -93,6 +94,7 @@ export function calculateFutureDate(days: number) {
   currentDate.setDate(currentDate.getDate() + days);
   return currentDate;
 }
+
 export function getMonthName(yearAndMonth: string) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [year, monthNumber] = yearAndMonth.split("-");
@@ -102,11 +104,13 @@ export function getMonthName(yearAndMonth: string) {
     ? `${date.toLocaleString("default", { month: "long" })} (ongoing)`
     : date.toLocaleString("default", { month: "long" });
 }
+
 export function calculatePastDate(days: number) {
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - days);
   return currentDate;
 }
+
 export function timeUntilMidnight(): { hours: number; minutes: number } {
   const now = new Date();
   const midnight = new Date();
@@ -161,3 +165,38 @@ export const formatDateTime = (dateString: Date) => {
 export function formatId(id: string) {
   return `..${id.substring(id.length - 6)}`;
 }
+
+export const getFilterUrl = ({
+  params,
+  category,
+  tag,
+  sort,
+  price,
+  rating,
+  page,
+}: {
+  params: {
+    q?: string;
+    category?: string;
+    tag?: string;
+    price?: string;
+    rating?: string;
+    sort?: string;
+    page?: string;
+  };
+  tag?: string;
+  category?: string;
+  sort?: string;
+  price?: string;
+  rating?: string;
+  page?: string;
+}) => {
+  const newParams = { ...params };
+  if (category) newParams.category = category;
+  if (tag) newParams.tag = toSlug(tag);
+  if (price) newParams.price = price;
+  if (rating) newParams.rating = rating;
+  if (page) newParams.page = page;
+  if (sort) newParams.sort = sort;
+  return `/search?${new URLSearchParams(newParams).toString()}`;
+};
