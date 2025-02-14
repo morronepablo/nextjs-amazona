@@ -4,6 +4,8 @@ export const i18n = {
     { code: "fr", name: "Français", icon: "/flags/fr.svg" },
     { code: "ar", name: "العربية", icon: "/flags/sa.svg" },
     { code: "es", name: "Español", icon: "/flags/es.svg" },
+    { code: "pt", name: "Português", icon: "/flags/pt.svg" }, // Portugués
+    { code: "de", name: "Deutsch", icon: "/flags/de.svg" }, // Alemán
   ],
   defaultLocale: "en-US",
 };
