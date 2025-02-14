@@ -1,36 +1,36 @@
-"use client";
+'use client'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { getFilterUrl } from "@/lib/utils";
-import { useRouter } from "next/navigation";
-import React from "react";
+} from '@/components/ui/select'
+import { getFilterUrl } from '@/lib/utils'
+import { useRouter } from 'next/navigation'
+import React from 'react'
 
 export default function ProductSortSelector({
   sortOrders,
   sort,
   params,
 }: {
-  sortOrders: { value: string; name: string }[];
-  sort: string;
+  sortOrders: { value: string; name: string }[]
+  sort: string
   params: {
-    q?: string;
-    category?: string;
-    price?: string;
-    rating?: string;
-    sort?: string;
-    page?: string;
-  };
+    q?: string
+    category?: string
+    price?: string
+    rating?: string
+    sort?: string
+    page?: string
+  }
 }) {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <Select
       onValueChange={(v) => {
-        router.push(getFilterUrl({ params, sort: v }));
+        router.push(getFilterUrl({ params, sort: v }))
       }}
       value={sort}
     >
@@ -48,5 +48,5 @@ export default function ProductSortSelector({
         ))}
       </SelectContent>
     </Select>
-  );
+  )
 }
